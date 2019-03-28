@@ -43,7 +43,7 @@ if [[ -z "$(sudo docker ps -q -f name=jenkin-master)" ]]; then
 	if [[ -z "$(sudo docker ps -aq -f name=jenkin-master)" ]]; then
 		echo "jenkin-master container does not exist at all ... creating NEW container"
 		# Launch Jenkins container (latest lts) from jenkins.io
-        	sudo docker run -d -p 8080:8080 -p 50000:50000 -u root -v /home/"$(whoami)"/jenkins-master:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name jenkin-master jenkins/jenkins:lts
+        	sudo docker run -d -p 8080:8080 -p 50000:50000 -u root -v /home/"$(whoami)"/jenkins-master:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker --name jenkin-master jenkins/jenkins:lts
 		sleep 5
 	else
 		echo "Starting existing Jenkin-master container"

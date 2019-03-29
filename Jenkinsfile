@@ -11,7 +11,7 @@ node{
 
     stage('Push Image'){
         docker.withRegistry('https://index.docker.io/v1/','nusrath-dockerhub-cred'){
-            #app.push("nusrath432/nginx:${env.GIT_COMMIT}")
+            //app.push("nusrath432/nginx:${env.GIT_COMMIT}")
             app.push("nusrath432/nginx:1")
             app.push("latest")
         }
